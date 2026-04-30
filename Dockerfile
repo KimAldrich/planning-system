@@ -21,7 +21,10 @@ WORKDIR /var/www/html
 # 5. Copy application source
 COPY . .
 
-# 6. Install dependencies
+# Set Composer memory limit to unlimited
+ENV COMPOSER_MEMORY_LIMIT=-1
+
+# Then run your install command
 RUN composer install --no-dev --optimize-autoloader
 
 # 7. Fix permissions
